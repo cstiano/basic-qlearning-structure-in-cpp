@@ -5,7 +5,28 @@ Qtablelearning::Qtablelearning(const unsigned int states, const unsigned int act
 	this->actions = actions;
 
 	this->Qtable = new double*[states];
-	for(int i = 0; i<actions; ++i){
+	for(int i = 0; i<states; ++i){
+		this->Qtable[i] = new double[actions];
+	}
+
+	for (int i = 0; i < states; ++i)
+	{
+		for (int j = 0; j < actions; ++j)
+		{
+			this->Qtable[i][j] = 0;
+		}
+	}
+}
+
+Qtablelearning::Qtablelearning(const unsigned int states, const unsigned int actions, double lr, double g){
+	this->states = states;
+	this->actions = actions;
+
+	this->learningRate = lr;
+	this->Gamma = g;
+
+	this->Qtable = new double*[states];
+	for(int i = 0; i<states; ++i){
 		this->Qtable[i] = new double[actions];
 	}
 
@@ -35,8 +56,13 @@ double Qtablelearning::reward(){
 	//TODO
 }
 
-void Qtablelearning::updateQtable(){
-	//TODO
+void Qtablelearning::updateQtable(const int curState, const int curAction){
+	std::pair<double, int> maxAction = getMaxAction(curState);
+	this->Qtable[curState][curAction] = this->Qtable[curState][curAction] + this->learningRate * (reward() + this->Gamma * maxAction.second); 
+}
+
+int Qtablelearning::getRandomAction(){
+	return rand() % this->actions;
 }
 
 void Qtablelearning::saveTable(std::string tableName){

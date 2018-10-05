@@ -2,6 +2,7 @@
 #define QTABLELEARNING_H
 
 #include <string>
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 
@@ -21,7 +22,7 @@ private:
 
 public:
 	Qtablelearning(const unsigned int states, const unsigned int actions);
-	// Qtablelearning(const unsigned int states, const unsigned int actions, double lr, double g);
+	Qtablelearning(const unsigned int states, const unsigned int actions, double lr, double g);
 	~Qtablelearning();
 	
 	//Get max action in table with the state determined
@@ -32,6 +33,9 @@ public:
 
 	//Function to update the Qtable (Q-learning table algorithm)
 	void updateQtable();
+
+	//Get random action to act in the environment
+	int getRandomAction();
 
 	//Save the q-learning table in a file
 	void saveTable(std::string tableName);
