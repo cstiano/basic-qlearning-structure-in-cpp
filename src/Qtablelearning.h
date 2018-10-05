@@ -32,7 +32,7 @@ public:
 	double reward();
 
 	//Function to update the Qtable (Q-learning table algorithm)
-	void updateQtable();
+	void updateQtable(const int curState, const int curAction);
 
 	//Get random action to act in the environment
 	int getRandomAction();

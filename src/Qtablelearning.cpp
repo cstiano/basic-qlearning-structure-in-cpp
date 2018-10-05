@@ -58,7 +58,7 @@ double Qtablelearning::reward(){
 
 void Qtablelearning::updateQtable(const int curState, const int curAction){
 	std::pair<double, int> maxAction = getMaxAction(curState);
-	this->Qtable[curState][curAction] = this->Qtable[curState][curAction] + this->learningRate * (reward() + this->Gamma * maxAction.second); 
+	this->Qtable[curState][curAction] = this->Qtable[curState][curAction] + this->learningRate * (reward() + this->Gamma * maxAction.second - this->Qtable[curState][curAction]); 
 }
 
 int Qtablelearning::getRandomAction(){
