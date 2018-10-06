@@ -25,6 +25,7 @@ int main(){
     int num_iterations = 0;
     while(num_iterations<10000){
         //Here should be reseted the environment
+        sample.setLastState(0);
         while(j<99){
             j++;
             sample.updateQtable(getCurState(),sample.getRandomAction(), sample.reward(std::make_pair(0,0),std::make_pair(3,3)));

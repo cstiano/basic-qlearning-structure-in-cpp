@@ -21,7 +21,7 @@ private:
 	double Gamma = 0.95;
 
 	//Last state
-	unsigned int lastState;
+	unsigned int lastState = 0;
 
 public:
 	Qtablelearning(const unsigned int states, const unsigned int actions);
