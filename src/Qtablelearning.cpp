@@ -53,12 +53,12 @@ std::pair<double,int> Qtablelearning::getMaxAction(const unsigned int curState){
 }
 
 double Qtablelearning::reward(){
-	//TODO
+	//The reward could be made as the choose environment - implementation following the expecification of the problem 
 }
 
-void Qtablelearning::updateQtable(const int curState, const int curAction){
+void Qtablelearning::updateQtable(const int curState, const int curAction, double r){
 	std::pair<double, int> maxAction = getMaxAction(curState);
-	this->Qtable[curState][curAction] = this->Qtable[curState][curAction] + this->learningRate * (reward() + this->Gamma * maxAction.second - this->Qtable[curState][curAction]); 
+	this->Qtable[curState][curAction] = this->Qtable[curState][curAction] + this->learningRate * (r + this->Gamma * maxAction.second - this->Qtable[curState][curAction]); 
 }
 
 int Qtablelearning::getRandomAction(){
