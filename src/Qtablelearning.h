@@ -59,6 +59,12 @@ public:
 
 	//Set last state
 	void setLastState(unsigned int ls){ this->lastState = ls; }
+
+	//get states
+	unsigned int getStates(){ return this->states; }
+
+	//get actions
+	unsigned int getActions(){ return this->actions; }
 };
 
 #endif
