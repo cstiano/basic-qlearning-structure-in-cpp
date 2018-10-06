@@ -20,10 +20,12 @@ private:
 	double learningRate = 0.8;
 	double Gamma = 0.95;
 
+	//Last state
+	unsigned int lastState;
+
 public:
 	Qtablelearning(const unsigned int states, const unsigned int actions);
 	Qtablelearning(const unsigned int states, const unsigned int actions, double lr, double g);
-	~Qtablelearning();
 	
 	//Get max action in table with the state determined
 	std::pair<double,int> getMaxAction(const unsigned int curState);
@@ -48,6 +50,15 @@ public:
 	//Setting and configuring learning rate or gamma
 	void setLearningRate(double lr){ this->learningRate = lr; };
 	void setGamma(double g){ this->Gamma = g;};
+	
+	//Print the QTable
+	void printQtable();
+
+	//Get Qtable
+	double** getQtable(){ return this->Qtable; }
+
+	//Set last state
+	void setLastState(unsigned int ls){ this->lastState = ls; }
 };
 
 #endif

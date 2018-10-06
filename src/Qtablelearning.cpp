@@ -102,3 +102,12 @@ void Qtablelearning::getTableFromFile(std::string tableName, std::string pathToG
 	}
 	f.close();
 }
+
+void Qtablelearning::printQtable(){
+	for(int i = 0; i<this->states; ++i){
+		for(int j = 0; j<this->actions; ++j){
+			std::cout<<this->Qtable[i][j]<<" ";
+		}
+		std::cout<<std::endl;
+	}
+}
