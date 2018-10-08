@@ -87,22 +87,26 @@ void Qtablelearning::saveTable(std::string tableName, std::string pathToSave){
 	f.close();
 }
 
-void Qtablelearning::getTableFromFile(std::string tableName){
+int Qtablelearning::getTableFromFile(std::string tableName){
 	std::ifstream f(tableName);
+	if(f.fail()) return 0;
 	for (int i = 0; i < this->states; i++){
 		for (int j = 0; j < this->actions; j++)
 		  f >> this->Qtable[i][j];
 	}
 	f.close();
+	return 1;
 }
 
-void Qtablelearning::getTableFromFile(std::string tableName, std::string pathToGet){
+int Qtablelearning::getTableFromFile(std::string tableName, std::string pathToGet){
 	std::ifstream f(pathToGet+"/"+tableName);
+	if(f.fail()) return 0;
 	for (int i = 0; i < this->states; i++){
 		for (int j = 0; j < this->actions; j++)
 		  f >> this->Qtable[i][j];
 	}
 	f.close();
+	return 1;
 }
 
 void Qtablelearning::printQtable(){

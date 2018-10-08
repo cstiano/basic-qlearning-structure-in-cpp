@@ -44,8 +44,8 @@ public:
 	void saveTable(std::string tableName, std::string pathToSave);
 
 	//Get table from file
-	void getTableFromFile(std::string tableName);
-	void getTableFromFile(std::string tableName, std::string pathToGet);
+	int getTableFromFile(std::string tableName);
+	int getTableFromFile(std::string tableName, std::string pathToGet);
 
 	//Setting and configuring learning rate or gamma
 	void setLearningRate(double lr){ this->learningRate = lr; };
